@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script type="text/javascript" src='/assets/jquery.1.11.js'></script>
+		<script type="text/javascript" src='/assets/layer/layer.js'></script>
+	</head>
+	<body>
+		<script>
+			//1 layer.alert('layer的警告框');
+
+			//2 confirm();提示框 参数1：提示框上显示的内容
+			//参数2：回调函数，点击确定后执行的函数
+			/*layer.confirm('确定删除用户吗?',function(){
+				alert(123);
+			});*/
+
+			//3 msg消息弹出框
+			//layer.msg('消息弹出框');
+
+			//4 prompt();输入层
+			layer.prompt({
+				//参数1 ：
+				formType:2,//文本框的类型  0 单行文本框  1 密码框  2 多行文本框
+				value:'初始值',//文本框中最终的内容
+ 			},function(value,index,elem){
+				//参数2 ：value:文本框中最终要显示的内容
+				//index:dqngiqn
+			alert(value);//得到value
+			layer.close(index);
+
+
+			}
+
+
+			);
+		</script>
+	</body>
+	</html>	

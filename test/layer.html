@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src='/assets/jquery.1.11.js'></script>
+	<script type="text/javascript" src='/assets/layer/layer.js'></script>
+</head> 
+<body>
+<div id='d' style="display: none;">
+	div中隐藏的内容
+</div>
+<script>
+  layer.ready(function(){ 
+  layer.open({
+    type: 2,
+    //弹出层类型 0-4 主要使用0，1，2  type=0时，content设置的内容就是直接显示在弹出框
+   //type=1时，content需要设置一个标签，并且弹出层中会显示标签中的内容
+   //type=2时，content要设置另一个html/php地址。弹出层中会显示另一个html/php文件中的内容
+    title: '欢迎页',
+    maxmin: true,//受否有最大化最小化按钮（true/false）
+    area: ['800px', '500px'],
+    content: 't.html',
+    end: function(){
+      layer.tips('Hi', '#about', {tips: 1})
+    }
+  });
+});
+
+</script>
+	
+</body>
+</html>

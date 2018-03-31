@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>Sign in &laquo; Admin</title>
+  <link rel="stylesheet" href="../assets/vendors/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <script type="text/javascript" src="/assets/jquery.1.11.js"></script>
+
+  <style>
+img{
+  position: absolute;
+  left: 230px;
+  top: 198px;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="login">
+    <form class="login-wrap">
+      <img class="avatar" src="../assets/img/default.png">
+      <!-- 有错误信息时展示 -->
+      <!-- <div class="alert alert-danger">
+        <strong>错误！</strong> 用户名或密码错误！
+      </div> -->
+      <div class="form-group">
+        <label for="email" class="sr-only">邮箱</label>
+        <input id="email" type="email"  name='email' class="form-control" placeholder="邮箱" autofocus>
+      </div>
+      <div class="form-group">
+        <label for="password" class="sr-only">密码</label>
+        <input id="password" type="password" name='pwd' class="form-control" placeholder="密码">
+      </div>
+      <div class="form-group">
+        <label for="password" class="sr-only">验证码</label>
+        <input id="yanzheng" type="text" name='code' class="form-control" placeholder="验证码">
+        <img src="yanzheng.php" id='code'>
+      </div>
+      <a class="btn btn-primary btn-block" href="javascript:;">登 录</a>
+    </form>
+  </div>
+<script>
+ // 获取验证码
+var img_obj = document.getElementById('code');
+img_obj.onclick = function(){
+  //alert(1);
+  //点击获取验证码  系统的验证码  请求不同的地址  给验证码的后缀添加随机数 
+  img_obj.src = "yanzheng.php?"+Math.random();
+}
+
+//1 获取登录按钮 绑定点击事件
+$('.btn-primary').click(function(){
+ // alert(1);
+//2 获取要操作的元素
+var email    = $('#email').val();//邮箱名
+var password = $('#password').val();//密码
+var yanzheng = $('#yanzheng').val();//验证码
+
+
+//3 发送ajax请求
+var data = {"email":email,"password":password,"yanzheng":yanzheng};
+$.get('check.php',data,function(msg){
+  //alert(msg);
+  if(msg==1){
+    alert('验证码有误');
+  }else if(msg==2){
+    alert('输入的用户名有误');
+  }else if(msg==3){
+    alert('输入的密码有误');
+  }else if(msg==4){
+    alert('登陆成功');
+    //跳转到首页
+    location.href = 'index.php';
+  }
+});
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+</body>
+</html>

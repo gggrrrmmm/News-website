@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">  
+	<title>Document</title>
+	<!-- <script src='test/assets/jquery.1.11.js'></script> -->
+	<script type="text/javascript" src="/assets/jquery.1.11.js"></script>
+</head>
+<body>
+	
+	选择头像:<input type="file"  id='f' multiple="multiple" onchange="upload()">
+	<img src="">
+	<script>
+		//用ajax请求  上传头像文件
+		function upload(){
+		//1 实例化 一个空的 FormData 对象
+		var fd = new FormData();
+		//2 获取上传的文件
+		var file_obj = document.getElementById('f').files[0];
+		//3 将获取到上传的文件追加到fd对象中
+		//append(); 用来像formdata中追加数据
+		//参数1：key下标
+		//参数2:value 值
+		fd.append('pic',file_obj);
+
+		//4 发送ajax请求
+		$.ajax({
+		url:'index.php', //发送到后台的地址
+		type:'post',  //请求方式 post/get
+		data:fd,   //发送到后台的数据
+		dataType:'text',  //后台返回的数据类型
+		contentType:false,//头设置信息
+		processData:false,//数据处理方式
+		success:function(msg){
+			//alert(msg);
+			$('img').attr('src',msg);
+		}
+
+		});
+
+
+
+		}
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

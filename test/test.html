@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<form id='form'>
+选择头像:<input type="file" name="f" id='file'>
+<input type="button" value="上传">
+</form>
+<script>
+//var fm = document.getElementById('form');	
+//先实例化一个空的formdata
+var fd = new FormData();
+//单独取出文件对象
+var file = document.getElementById('file').files[0];
+
+</script>
+</body>
+</html>
